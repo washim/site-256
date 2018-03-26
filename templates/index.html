@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="row">
+    {% for chart in graphs %}
+        {% set cardtitle,cardbody=chart[0],chart[4] %}
+        {% if loop.cycle('odd', 'even') == 'odd'%}
+        <div class="col-md-6 pr-0">
+            {% include "elements/card.html" %}
+        </div>
+        {% else %}
+        <div class="col-md-6">
+            {% include "elements/card.html" %}
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

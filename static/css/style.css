@@ -1,0 +1,5 @@
+.nice-select.wide{width:30%;}
+.error{color: rgb(153, 11, 11);}
+input.error,input.error:focus{border: 1px solid rgb(153, 11, 11) !important;}
+table,.wide,label[for=interval]{width:100%;}
+.red{list-style: none; color: red; padding: 0px; margin: 0px; font-size: 11px;}

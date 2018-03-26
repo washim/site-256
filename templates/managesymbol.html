@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% from "elements/_formhelpers.html" import render_field %}
+{% block body %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+        <h6 class="card-header">{% if data.symbols %}Update Symbol{% else %}Add Symbol{% endif %}</h6>
+        <div class="card-body">
+            <form method="POST" action="/managesymbol{% if data.symbols %}/{{ data.symbols }}{% endif %}">
+                {{ form.csrf_token }}
+                <div class="row">
+                    <div class="col-md-4">{{ render_field(form.symbols, class='form-control', value=data.symbols) }}</div>
+                    <div class="col-md-4">{{ render_field(form.capital, class='form-control', value=data.capital) }}</div>
+                    <div class="col-md-4">{{ render_field(form.quantity, class='form-control', value=data.quantity) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ render_field(form.sma, class='form-control', value=data.sma) }}</div>
+                    <div class="col-md-4">{{ render_field(form.lma, class='form-control', value=data.lma) }}</div>
+                    <div class="col-md-4">{{ render_field(form.interval, value=data.interval) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ render_field(form.startdt, class='form-control', type='date', value=data.startdt) }}</div>
+                    <div class="col-md-4">{{ render_field(form.enddt, class='form-control', type='date', value=data.enddt) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><input type="submit" class="btn btn-primary mt-3" value="Save"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

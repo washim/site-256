@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% from "elements/_formhelpers.html" import render_field %}
+{% block body %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+        <h6 class="card-header">Dump Historical Data</h6>
+        <div class="card-body">
+            <form method="POST" action="/dumphistoricaldata">
+                {{ form.csrf_token }}
+                <div class="row">
+                    <div class="col-md-4">{{ render_field(form.capital, class='form-control') }}</div>
+                    <div class="col-md-4">{{ render_field(form.quantity, class='form-control') }}</div>
+                    <div class="col-md-4">
+                        <label for="dump" style="width:100%;">Do you want to dump data?</label>
+                        <select name="dump" id="dump">
+                            <option value="no" data-display="No" selected>No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ render_field(form.sma, class='form-control') }}</div>
+                    <div class="col-md-4">{{ render_field(form.lma, class='form-control') }}</div>
+                    <div class="col-md-4">{{ render_field(form.interval) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ render_field(form.startdt, class='form-control', type='date') }}</div>
+                    <div class="col-md-4">{{ render_field(form.enddt, class='form-control', type='date') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><input type="submit" class="btn btn-primary mt-3" value="Save"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
